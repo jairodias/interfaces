@@ -7,9 +7,9 @@ public class RentalService {
     private Double pricePerDay;
     private Double pricePerHour;
 
-    private BrazilTaxService taxService;
+    private TaxService taxService;
 
-    public RentalService(Double pricePerDay, Double pricePerHour, BrazilTaxService taxService) {
+    public RentalService(Double pricePerDay, Double pricePerHour, TaxService taxService) {
         this.pricePerDay = pricePerDay;
         this.pricePerHour = pricePerHour;
         this.taxService = taxService;
@@ -19,10 +19,10 @@ public class RentalService {
         long start = carRental.getStart().getTime();
         long finish = carRental.getFinish().getTime();
 
-        double hours = (double) (start - finish) / 1000 / 60 / 60;
+        double hours = (double) (finish - start) / 1000 / 60 / 60;
 
         double basicPayment = 0;
-        if (hours <= 12.0) {
+        if (hours <= 24.0) {
             basicPayment = Math.ceil(hours) * this.pricePerHour;
         } else {
             basicPayment = Math.ceil(hours / 24) * this.pricePerDay;

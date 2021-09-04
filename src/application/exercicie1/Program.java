@@ -18,11 +18,11 @@ public class Program {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:ss");
 
         System.out.println("Enter rental data");
-        System.out.println("Car model: ");
+        System.out.print("Car model: ");
         String carModel = sc.nextLine();
-        System.out.println("Pickup (dd/MM/yyyy hh:ss): ");
+        System.out.print("Pickup (dd/MM/yyyy hh:ss): ");
         Date start = sdf.parse(sc.nextLine());
-        System.out.println("Return (dd/MM/yyyy hh:ss): ");
+        System.out.print("Return (dd/MM/yyyy hh:ss): ");
         Date finish = sdf.parse(sc.nextLine());
 
         CarRental carRental = new CarRental(start, finish, new Vehicle(carModel));
